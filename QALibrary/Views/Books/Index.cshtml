@@ -1,0 +1,49 @@
+﻿@model IEnumerable<QALibrary.Models.Book>
+
+@{
+    ViewBag.Title = "Books List";
+}
+
+<h2>List of Available Books</h2>
+
+<p>
+    Please add items to the basket.
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher)
+        </td>
+        <td>
+            @Html.ActionLink("Add to Basket", "Add", "Basket", new { id=item.BookID }, null)
+        </td>
+    </tr>
+}
+
+</table>
